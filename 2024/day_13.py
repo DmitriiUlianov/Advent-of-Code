@@ -3,16 +3,20 @@ with open("input.txt", "r") as file:
     res = []
     n = 0
     for line in file:
-        for item in line:
-            if '+' in item:
-                num = item.split('+')
-            elif '=' in item:
-                num = item.split('=')
-        n += 1
-        if n < 4:
-            res.append(int(num[1]))
-        else:
-            comb.append(res)
-            n = 0
+        parts = re.split(' |, |\n', line)
+        for item in parts:
+            if '+' in item or '=' in item:
+                if '+' in item:
+                    item = item.split('+')
+                elif '=' in item:
+                    item = item.split('=')
+                
+                n += 1
+                if n <= 6:
+                    res.append(int(item[1]))
+                if n == 6:
+                    comb.append(res)
+                    res = []
+                    n = 0
         
 print(comb)
