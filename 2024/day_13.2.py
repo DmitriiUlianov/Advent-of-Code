@@ -31,10 +31,15 @@ for nums in comb:
     print(x)
     print(x[0])
     print(x[1])
+    print(round(x[0],1))
+    print(round(x[1],1))
     if (round(x[0],1) - round(x[0])) == 0 and (round(x[1],1) - round(x[1])) == 0:
         total += 3*round(x[0]) + round(x[1])
+        print(1)
+    else:
+        print(0)
         
-print(total)# 4199821452475189258 too high
+print(total)
         
         
         
