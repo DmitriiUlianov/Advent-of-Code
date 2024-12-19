@@ -39,14 +39,4 @@ for nums in comb:
     else:
         print(0)
         
-print(total)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+print(total) # 4199821452475189258 too high
