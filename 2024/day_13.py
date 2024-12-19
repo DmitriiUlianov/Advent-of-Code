@@ -31,6 +31,16 @@ for nums in comb:
     print(x[0])
     print(x[1])
     if int(x[0]) <= 100 and int(x[1]) <= 100 and (round(x[0],1) - int(x[0])) == 0 and (round(x[1],1) - int(x[1])) == 0:
-        total += 3*int(x[0]) + int(x[1])
+        total += 3*round(x[0]) + round(x[1])
         
 print(total) #21571 too low
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
