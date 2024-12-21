@@ -1,0 +1,49 @@
+cont = []
+filelen = 0
+with open("input.txt", "r") as file:
+    for line in file:
+        cont += '.' + line.strip()
+        linelen = len(line.strip()) + 1
+        filelen += linelen
+cont.append('.')        
+mydict = []       
+for i in cont:
+    if i.isalpha() and i not in mydict:
+        mydict.append(i)
+
+print(mydict)
+print(cont)
+
+area = []
+for i in mydict:
+    area.append(cont.count(i))
+print(area)
+
+perimeter = []
+for i in mydict:
+    fence = 0
+    for idx, j in enumerate(cont):
+        if j == i:
+            if cont[idx - 1] != j:
+                fence += 1
+            if cont[idx + 1] != j:
+                fence += 1
+            if idx - linelen >= 0:
+                if cont[idx - linelen] != j:
+                    fence += 1
+            else:
+                fence += 1
+            if idx + linelen <= filelen:
+                if cont[idx + linelen] != j:
+                    fence += 1
+            else:
+                fence += 1
+                
+    perimeter.append(fence)
+print(perimeter)
+        
+price = sum(map(lambda x, y: x * y, area, perimeter))
+print(price)
+    
+
+        
