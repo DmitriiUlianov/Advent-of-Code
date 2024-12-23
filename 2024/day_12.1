@@ -5,45 +5,48 @@ with open("input.txt", "r") as file:
         cont += '.' + line.strip()
         linelen = len(line.strip()) + 1
         filelen += linelen
-cont.append('.')        
-mydict = []       
-for i in cont:
-    if i.isalpha() and i not in mydict:
-        mydict.append(i)
+cont.append('.')
 
-print(mydict)
-print(cont)
-
+idx_dict = [] 
 area = []
-for i in mydict:
-    area.append(cont.count(i))
-print(area)
-
 perimeter = []
-for i in mydict:
-    fence = 0
-    for idx, j in enumerate(cont):
-        if j == i:
-            if cont[idx - 1] != j:
-                fence += 1
-            if cont[idx + 1] != j:
-                fence += 1
-            if idx - linelen >= 0:
-                if cont[idx - linelen] != j:
-                    fence += 1
-            else:
-                fence += 1
-            if idx + linelen <= filelen:
-                if cont[idx + linelen] != j:
-                    fence += 1
-            else:
-                fence += 1
-                
-    perimeter.append(fence)
-print(perimeter)
+for idx, i in enumerate(cont):
+    current_area = []
+    if i.isalpha() and idx not in idx_dict:
         
+        # finding erea:
+        current_area.append(idx)
+        for j in current_area:
+            if j - 1 not in current_area and cont[j - 1] == i:
+                current_area.append(j - 1)
+            if j + 1 not in current_area and cont[j + 1] == i:
+                current_area.append(j + 1)
+            if j - linelen >= 0 and j - linelen not in current_area and cont[j - linelen] == i:
+                current_area.append(j - linelen)
+            if j + linelen <= filelen and j + linelen not in current_area and cont[j + linelen] == i:
+                current_area.append(j + linelen)
+        idx_dict.extend(current_area)
+        area.append(len(current_area))
+        
+        # finding perimeter:
+        fence = 0
+        for n in current_area:
+            if cont[n - 1] != i:
+                fence += 1
+            if cont[n + 1] != i:
+                fence += 1
+            if n - linelen >= 0:
+                if cont[n - linelen] != i:
+                    fence += 1
+            else:
+                fence += 1
+            if n + linelen <= filelen:
+                if cont[n + linelen] != i:
+                    fence += 1
+            else:
+                fence += 1
+        perimeter.append(fence)
+
 price = sum(map(lambda x, y: x * y, area, perimeter))
 print(price)
     
-
-        
