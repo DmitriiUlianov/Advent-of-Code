@@ -3,30 +3,46 @@ with open("input.txt", "r") as file:
 nums = []
 nums += cont
 nums = [int(i) for i in nums]
-#print(nums)
+print(nums)
 
-data = ''
+data = []
 k = 0
 for idx, i in enumerate(nums):
     if idx % 2 == 0:
-        data += str(k)*i
+        while i > 0:
+            data.append(k)
+            i -= 1
         k += 1
     else:
-        data += '.'*i
-#print(data)
+        while i > 0:
+            data.append('.')
+            i -= 1
+print(data)
+
 
 while '.' in data:
     idx = data.index('.')
     l = len(data)
     while data[-1] == '.':
-        data = data[:l-1]
+        #data = data[:l-1]
+        data.pop(-1)
         l -= 1
-    string = ''
-    string += data[0:idx] + data[l - 1] + data[idx + 1:l - 1]
-    data = string
-    #print(data)
-#print(data)
+    '''   
+    new_data = []
+    new_data.append(data[0:idx])
+    new_data.append(data[l - 1])
+    new_data.append(data[idx + 1:l - 1])
+    data = new_data.copy()
+    '''
+    #print(data[idx])
+    #print(data[-1])
+    if '.' in data:
+        data[idx],data[-1] = data[-1],data[idx]
+        data.pop(-1)
+        print(data)
+print(data)
+
 res = 0
 for idx, i in enumerate(data):
-    res += int(data[idx])*idx
+    res += int(i)*idx
 print(res) #91381988682 to low
