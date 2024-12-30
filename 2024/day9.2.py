@@ -36,19 +36,22 @@ while i != j:
                 space += 1
             if data[j] == data[j - 1]:
                 while data[j] == data[j - 1]:
-                    print('data[j]', data[j])
-                    print(data[j - 1])
+                    #print('data[j]', data[j])
+                    #print('data[j-1]',data[j - 1])
                     j -= 1
                     numbers += 1
-                print('1', data[j])
-                if data[j - 1] == '.':
+                j -= 1
+                #print('1', data[j])
+                #print('1', data[j-1])
+                if data[j] == '.':
                     #print(data[j - 1])
-                    while data[j - 1] == '.':
+                    while data[j] == '.':
                         j -= 1
-                    j -= 1
+                    
                 
             #print(space)
             #print(numbers)
+            print(space >= numbers)
             if space >= numbers:
                 while numbers > 0:
                     
