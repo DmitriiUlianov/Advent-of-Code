@@ -19,53 +19,52 @@ for idx, i in enumerate(nums):
 
 #print(data)
 
-i = 0
 j = len(data) - 1
-while j > 0:
-    #for m in data:
-        space = 0
-        numbers = 1
-        start = i
-        end = j
+length = j
+first_dot = data.index('.')
+while j > first_dot:
+    #print(length)
+    #print(j)
+    numbers = 1
+    end = j
+    
+    while data[j] == data[j - 1]:
+        j -= 1
+        numbers += 1
+    j -= 1
+    
+    while data[j] == '.':
+        j -= 1
+    
+    i = 0
+    while i < j:
         if data[i] == '.':
-            print(i)
-            print(data)
+            space = 0
+            start = i
 
             while data[i] == '.':
                 i += 1
                 space += 1
-            if data[j] == data[j - 1]:
-                while data[j] == data[j - 1]:
-                    #print('data[j]', data[j])
-                    #print('data[j-1]',data[j - 1])
-                    j -= 1
-                    numbers += 1
-                j -= 1
-                #print('1', data[j])
-                #print('1', data[j-1])
-                if data[j] == '.':
-                    #print(data[j - 1])
-                    while data[j] == '.':
-                        j -= 1
-                    
-                
             #print(space)
             #print(numbers)
-            print(space >= numbers)
             if space >= numbers:
                 while numbers > 0:
+                    #print(data[end])
+                    #print('data[end]', data[end])
                     data[start],data[end] = data[end],data[start]
                     start += 1
                     end -= 1
                     numbers -= 1
-            else:
-                i = start - 1
-        
+                #print(data)
+                #print('j', j)
+                break
+            #print('j', j)
+
         i += 1
-                
-'''           
+
+#print(data)
 res = 0
 for idx, i in enumerate(data):
-    res += i*idx
-print(res)
-'''
+    if i != '.':
+        res += i*idx
+print(res) # 6467290913294 too high
