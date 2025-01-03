@@ -21,7 +21,7 @@ for idx, i in enumerate(nums):
 
 i = 0
 j = len(data) - 1
-while i != j:
+while j > 0:
     #for m in data:
         space = 0
         numbers = 1
@@ -54,11 +54,12 @@ while i != j:
             print(space >= numbers)
             if space >= numbers:
                 while numbers > 0:
-                    
                     data[start],data[end] = data[end],data[start]
                     start += 1
                     end -= 1
                     numbers -= 1
+            else:
+                i = start - 1
         
         i += 1
                 
