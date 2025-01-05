@@ -67,4 +67,6 @@ res = 0
 for idx, i in enumerate(data):
     if i != '.':
         res += i*idx
-print(res) # 6467290913294 too high
+print(res) 
+# 6467290913294 too high
+# 6537665560258 too high with '|'
