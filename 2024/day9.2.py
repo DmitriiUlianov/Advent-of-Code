@@ -18,32 +18,32 @@ for idx, i in enumerate(nums):
             i -= 1
 
 j = len(data) - 1
-length = j
 first_dot = data.index('.')
 while j > first_dot:
-    numbers = 1
-    end = j
+    count_numbers = 1
+    end_of_digit = j
     
     while data[j] == data[j - 1]:
         j -= 1
-        numbers += 1
+        count_numbers += 1
     j -= 1
     
     i = 0
-    while i < j:
+    while i <= j:
         if data[i] == '.':
-            space = 0
-            start = i
+            count_space = 0
+            start_of_space = i
 
             while data[i] == '.':
                 i += 1
-                space += 1
-            if space >= numbers:
-                while numbers > 0:
-                    data[start],data[end] = data[end],data[start]
-                    start += 1
-                    end -= 1
-                    numbers -= 1
+                count_space += 1
+                
+            if count_space >= count_numbers:
+                while count_numbers > 0:
+                    data[start_of_space],data[end_of_digit] = data[end_of_digit],data[start_of_space]
+                    start_of_space += 1
+                    end_of_digit -= 1
+                    count_numbers -= 1
                 break
         i += 1
         
