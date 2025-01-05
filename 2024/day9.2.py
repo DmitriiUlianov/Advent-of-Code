@@ -17,14 +17,10 @@ for idx, i in enumerate(nums):
             data.append('.')
             i -= 1
 
-#print(data)
-
 j = len(data) - 1
 length = j
 first_dot = data.index('.')
 while j > first_dot:
-    #print(length)
-    #print(j)
     numbers = 1
     end = j
     
@@ -32,9 +28,6 @@ while j > first_dot:
         j -= 1
         numbers += 1
     j -= 1
-    
-    while data[j] == '.':
-        j -= 1
     
     i = 0
     while i < j:
@@ -45,28 +38,20 @@ while j > first_dot:
             while data[i] == '.':
                 i += 1
                 space += 1
-            #print(space)
-            #print(numbers)
             if space >= numbers:
                 while numbers > 0:
-                    #print(data[end])
-                    #print('data[end]', data[end])
                     data[start],data[end] = data[end],data[start]
                     start += 1
                     end -= 1
                     numbers -= 1
-                #print(data)
-                #print('j', j)
                 break
-            #print('j', j)
-
         i += 1
+        
+    while data[j] == '.':
+        j -= 1
 
-#print(data)
 res = 0
 for idx, i in enumerate(data):
     if i != '.':
         res += i*idx
-print(res) 
-# 6467290913294 too high
-# 6537665560258 too high with '|'
+print(res)
