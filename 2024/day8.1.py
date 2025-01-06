@@ -31,7 +31,7 @@ for i_idx, i in enumerate(cont):
                     if j_num - (i_num - j_num) >= 0 and j_row + (j_row - i_row) <= filelen:
                         antinodes += 1
 
-print(antinodes)
+print(antinodes) # between 290 and 435
                     
                 
                 
