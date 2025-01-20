@@ -28,8 +28,6 @@ for idx, i in enumerate(cont):
         idx_dict.extend(current_area)
         area.append(len(current_area))
         
-        print(current_area)
-        l = len(current_area)
         '''
         # finding perimeter:
         fence = 0
@@ -51,25 +49,34 @@ for idx, i in enumerate(cont):
         perimeter.append(fence)
         '''
         # finding 2 perimetr:
+        print(current_area)
+        print(linelen)
+        
+        l = len(current_area)
         fence = 1
         idx = 0
-        print(linelen)
-        while idx < l:
-            if idx + 1 < l and current_area[idx + 1] - current_area[idx] == 1:
-                while idx + 1 < l and current_area[idx + 1] - current_area[idx] == 1:
-                    idx += 1
+        
+        for idx, i in enumerate(current_area):
+            if len(current_area) > 1 and current_area[idx + 1] - current_area[idx] == 1:
+                while len(current_area) > 1 and current_area[idx + 1] - current_area[idx] == 1:
+                    current_area.pop(0)
+                    print(current_area)
                 fence += 1
-            else:
-                fence += 1 
+             
             
-            if idx + 1 < l and current_area[idx + 1] - current_area[idx] == linelen:
-                while current_area[idx + 1] - current_area[idx] == linelen:
-                    idx += 1
-                fence += 1
-            else:
+            elif current_area[idx] + linelen == 1:
+                while idx + linelen in current_area:
+                    idx += linelen
                 fence += 1
             
-            idx += 1
+                
+            elif idx - linelen in current_area:
+                while idx - linelen in current_area:
+                    idx -= linelen
+                fence += 1
+            
+            
+            #idx += 1
 
         print("fence ", fence)
         if fence < 4:
